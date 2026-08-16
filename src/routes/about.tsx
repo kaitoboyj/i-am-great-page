@@ -1,72 +1,74 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import windowView from "@/assets/window-view.jpg";
+import { ArrowRight } from "lucide-react";
+import studio from "@/assets/studio-culture.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — 13Kulture" },
-      { name: "description", content: "13Kulture is a creative media and cultural platform dedicated to documenting, amplifying, and shaping the next generation of African talent." },
-      { property: "og:title", content: "About — 13Kulture" },
-      { property: "og:description", content: "The story behind 13Kulture — a creative media and cultural platform rooted in purpose." },
+      { title: "About — 13KULTURE Creative Culture Company" },
+      { name: "description", content: "13KULTURE is a Creative Culture Company building meaningful connections between African talent, media, brands, events and cultural platforms." },
+      { property: "og:title", content: "About — 13KULTURE" },
+      { property: "og:description", content: "We don't just document culture. We help build what comes next." },
+      { property: "og:type", content: "website" },
       { property: "og:url", content: "/about" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),
   component: About,
 });
 
-const timeline = [
-  { y: "2014", t: "Founded", d: "As a creative media desk documenting touring musicians and cultural events." },
-  { y: "2017", t: "Expanded", d: "Media division grows to cover fashion, art, and entertainment across West Africa." },
-  { y: "2020", t: "PJ Bookings", d: "Added private jet and international travel bookings to serve our artist clients." },
-  { y: "2024", t: "13Kulture today", d: "A full creative media and cultural platform — rooted in purpose, growing through creativity." },
-];
-
 function About() {
   return (
     <div>
       <section className="container-x py-24 md:py-32">
-        <p className="text-accent uppercase tracking-[0.3em] text-xs mb-4">About</p>
+        <p className="text-accent uppercase tracking-[0.3em] text-xs mb-4">About 13KULTURE</p>
         <h1 className="font-display text-5xl md:text-7xl max-w-4xl text-balance leading-[1.05]">
-          Where Culture Lives. <span className="italic text-accent">Where Legacy Begins.</span>
+          A Creative Culture Company. <span className="italic text-accent">Built for what comes next.</span>
         </h1>
-        <p className="mt-8 max-w-2xl text-muted-foreground text-lg leading-relaxed">
-          13Kulture is a creative media and cultural platform dedicated to documenting, amplifying, and shaping the next generation of African talent. Rooted in music, art, fashion, entertainment, and storytelling — we capture the moments that define culture and transform them into timeless visual experiences.
-        </p>
+        <div className="mt-8 max-w-3xl space-y-6 text-muted-foreground text-lg leading-relaxed">
+          <p>
+            13KULTURE is a Creative Culture Company building meaningful connections between African talent, media, brands, events and cultural platforms.
+          </p>
+          <p>
+            We identify opportunities, develop creative partnerships and create platforms that help talent and businesses move further.
+          </p>
+          <p>
+            From artist collaborations and media distribution to cultural events, creative campaigns and strategic partnerships, we work across the ecosystem to turn creativity into opportunity and opportunity into lasting value.
+          </p>
+          <p className="text-foreground font-display text-2xl md:text-3xl">
+            We don't just document culture. We help build what comes next.
+          </p>
+        </div>
       </section>
 
       <section className="relative">
-        <img src={windowView} alt="View from airplane window" className="w-full h-[60vh] object-cover" />
+        <img src={studio} alt="African creative studio at work" loading="lazy" width={1600} height={1000} className="w-full h-[60vh] object-cover" />
       </section>
 
       <section className="container-x py-24">
-        <div className="grid md:grid-cols-2 gap-12 mb-20">
+        <div className="grid md:grid-cols-3 gap-12">
           <div>
-            <h2 className="font-display text-3xl md:text-4xl mb-4">Mission</h2>
-            <p className="text-muted-foreground text-lg">To make international travel, hosting and creative work feel like the same craft — done by the same trusted hands.</p>
+            <h2 className="font-display text-3xl mb-4">What we believe</h2>
+            <p className="text-muted-foreground">Culture moves further when the right people move together. Our work is about connection, not just coverage.</p>
           </div>
           <div>
-            <h2 className="font-display text-3xl md:text-4xl mb-4">Standard</h2>
-            <p className="text-muted-foreground text-lg">No bookable mediocrity. Every flight is international, every property is vetted, every shoot is led by an award-winning DP.</p>
+            <h2 className="font-display text-3xl mb-4">How we work</h2>
+            <p className="text-muted-foreground">We sit between talent, media, brands and events — finding the opportunity, then building the partnership that makes it real.</p>
+          </div>
+          <div>
+            <h2 className="font-display text-3xl mb-4">Where we're going</h2>
+            <p className="text-muted-foreground">Growing a connected ecosystem for African creativity, from Lagos outward.</p>
           </div>
         </div>
 
-        <h2 className="font-display text-4xl mb-10">Timeline</h2>
-        <ol className="space-y-10 max-w-3xl">
-          {timeline.map((t) => (
-            <li key={t.y} className="grid grid-cols-[80px_1fr] gap-6 pb-10 border-b border-border last:border-0">
-              <span className="font-display text-3xl text-accent">{t.y}</span>
-              <div>
-                <h3 className="font-display text-2xl mb-1">{t.t}</h3>
-                <p className="text-muted-foreground">{t.d}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-
-        <div className="mt-20 text-center">
-          <Link to="/contact" className="inline-flex h-12 px-8 items-center rounded-full bg-foreground text-background hover:bg-accent hover:text-accent-foreground transition">
-            Work with us
+        <div className="mt-20 rounded-3xl border border-border bg-card p-12 text-center">
+          <p className="font-display text-3xl md:text-4xl text-balance">
+            Documenting Culture. <span className="italic text-accent">Creating Legacy.</span>
+          </p>
+          <p className="mt-4 text-muted-foreground">Our founding statement — still the standard we hold every project to.</p>
+          <Link to="/contact" className="inline-flex items-center gap-2 mt-8 h-12 px-8 rounded-full bg-accent text-accent-foreground font-medium hover:opacity-90 transition">
+            Start a conversation <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>
