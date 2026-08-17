@@ -9,18 +9,34 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WorkRouteImport } from './routes/work'
+import { Route as TravelRouteImport } from './routes/travel'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as PartnershipsRouteImport } from './routes/partnerships'
 import { Route as MediaRouteImport } from './routes/media'
-import { Route as HospitalityRouteImport } from './routes/hospitality'
-import { Route as FlightsRouteImport } from './routes/flights'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CareersRouteImport } from './routes/careers'
+import { Route as ArtistsRouteImport } from './routes/artists'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TravelRoute = TravelRouteImport.update({
+  id: '/travel',
+  path: '/travel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnershipsRoute = PartnershipsRouteImport.update({
+  id: '/partnerships',
+  path: '/partnerships',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MediaRoute = MediaRouteImport.update({
@@ -28,24 +44,14 @@ const MediaRoute = MediaRouteImport.update({
   path: '/media',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HospitalityRoute = HospitalityRouteImport.update({
-  id: '/hospitality',
-  path: '/hospitality',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FlightsRoute = FlightsRouteImport.update({
-  id: '/flights',
-  path: '/flights',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CareersRoute = CareersRouteImport.update({
-  id: '/careers',
-  path: '/careers',
+const ArtistsRoute = ArtistsRouteImport.update({
+  id: '/artists',
+  path: '/artists',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -62,85 +68,113 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/careers': typeof CareersRoute
+  '/artists': typeof ArtistsRoute
   '/contact': typeof ContactRoute
-  '/flights': typeof FlightsRoute
-  '/hospitality': typeof HospitalityRoute
   '/media': typeof MediaRoute
+  '/partnerships': typeof PartnershipsRoute
   '/services': typeof ServicesRoute
+  '/travel': typeof TravelRoute
+  '/work': typeof WorkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/careers': typeof CareersRoute
+  '/artists': typeof ArtistsRoute
   '/contact': typeof ContactRoute
-  '/flights': typeof FlightsRoute
-  '/hospitality': typeof HospitalityRoute
   '/media': typeof MediaRoute
+  '/partnerships': typeof PartnershipsRoute
   '/services': typeof ServicesRoute
+  '/travel': typeof TravelRoute
+  '/work': typeof WorkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/careers': typeof CareersRoute
+  '/artists': typeof ArtistsRoute
   '/contact': typeof ContactRoute
-  '/flights': typeof FlightsRoute
-  '/hospitality': typeof HospitalityRoute
   '/media': typeof MediaRoute
+  '/partnerships': typeof PartnershipsRoute
   '/services': typeof ServicesRoute
+  '/travel': typeof TravelRoute
+  '/work': typeof WorkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
-    | '/careers'
+    | '/artists'
     | '/contact'
-    | '/flights'
-    | '/hospitality'
     | '/media'
+    | '/partnerships'
     | '/services'
+    | '/travel'
+    | '/work'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/careers'
+    | '/artists'
     | '/contact'
-    | '/flights'
-    | '/hospitality'
     | '/media'
+    | '/partnerships'
     | '/services'
+    | '/travel'
+    | '/work'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/careers'
+    | '/artists'
     | '/contact'
-    | '/flights'
-    | '/hospitality'
     | '/media'
+    | '/partnerships'
     | '/services'
+    | '/travel'
+    | '/work'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  CareersRoute: typeof CareersRoute
+  ArtistsRoute: typeof ArtistsRoute
   ContactRoute: typeof ContactRoute
-  FlightsRoute: typeof FlightsRoute
-  HospitalityRoute: typeof HospitalityRoute
   MediaRoute: typeof MediaRoute
+  PartnershipsRoute: typeof PartnershipsRoute
   ServicesRoute: typeof ServicesRoute
+  TravelRoute: typeof TravelRoute
+  WorkRoute: typeof WorkRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/travel': {
+      id: '/travel'
+      path: '/travel'
+      fullPath: '/travel'
+      preLoaderRoute: typeof TravelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partnerships': {
+      id: '/partnerships'
+      path: '/partnerships'
+      fullPath: '/partnerships'
+      preLoaderRoute: typeof PartnershipsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/media': {
@@ -150,20 +184,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MediaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/hospitality': {
-      id: '/hospitality'
-      path: '/hospitality'
-      fullPath: '/hospitality'
-      preLoaderRoute: typeof HospitalityRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/flights': {
-      id: '/flights'
-      path: '/flights'
-      fullPath: '/flights'
-      preLoaderRoute: typeof FlightsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -171,11 +191,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/careers': {
-      id: '/careers'
-      path: '/careers'
-      fullPath: '/careers'
-      preLoaderRoute: typeof CareersRouteImport
+    '/artists': {
+      id: '/artists'
+      path: '/artists'
+      fullPath: '/artists'
+      preLoaderRoute: typeof ArtistsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -198,12 +218,13 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  CareersRoute: CareersRoute,
+  ArtistsRoute: ArtistsRoute,
   ContactRoute: ContactRoute,
-  FlightsRoute: FlightsRoute,
-  HospitalityRoute: HospitalityRoute,
   MediaRoute: MediaRoute,
+  PartnershipsRoute: PartnershipsRoute,
   ServicesRoute: ServicesRoute,
+  TravelRoute: TravelRoute,
+  WorkRoute: WorkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
