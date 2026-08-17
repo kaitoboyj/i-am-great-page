@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Users, Megaphone, Camera, Handshake, CalendarDays, Radio, Plane } from "lucide-react";
+import { ArrowRight, Users, Megaphone, Camera, Handshake, CalendarDays, Radio } from "lucide-react";
 import studio from "@/assets/studio-culture.jpg";
 
 export const Route = createFileRoute("/services")({
@@ -69,7 +69,6 @@ function Services() {
         <Link to="/contact" className="inline-flex items-center gap-2 mt-8 h-12 px-8 rounded-full bg-accent text-accent-foreground font-medium hover:opacity-90 transition">
           Start a conversation <ArrowRight className="w-4 h-4" />
         </Link>
-        <p className="sr-only"><Plane className="w-4 h-4" /></p>
       </section>
     </div>
   );
